@@ -1,0 +1,5 @@
+<div class="wrapper btn btn-secondary">
+  <button [disabled]="!value" class="btn btn-secondary" name="sub" (click)="changeValue($event)">-</button>
+  <button class="value btn btn-secondary">{{ value }}</button>
+  <button class="btn btn-secondary" name="add" (click)="changeValue($event)">+</button>
+</div>

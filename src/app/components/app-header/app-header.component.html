@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="'#" class="navbar-brand">Shop Easy</a>
+    </div>
+    <app-dropdown
+      [placeholder]="'Select Category'"
+      [options]="categories"
+      (selectOption)="changeCategory($event)"
+      [value]="category"
+    ></app-dropdown>
+    <!-- <select (change)="changeCategory($event)">  
+            <option disabled>Select Category</option>
+            <option class="category-option" *ngFor="let category of categories">{{category}}</option>  
+        </select>   -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLinkActive="active" class="nav-link" routerLink="/products"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLinkActive="active"
+            class="nav-link"
+            routerLink="/shopping-cart"
+            >Your Cart</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="search-bar" *ngIf="showSearchBar">
+        <input type="search" class="search-text" placeholder="Search for an item....." [(ngModel)]="searchText" >
+        <button class="btn btn-primary" type="button" (click)="searchItem($event)">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#filterModal"
+      aria-controls="filterModal"
+    >
+      Filters
+    </button>
+  </div>
+</nav>

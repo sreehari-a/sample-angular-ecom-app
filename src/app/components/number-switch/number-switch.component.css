@@ -1,0 +1,11 @@
+.wrapper {
+    display: flex;
+    padding: 0;
+    width: fit-content;
+}
+button {
+    border: 0;
+}
+.value {
+    pointer-events: none;
+}

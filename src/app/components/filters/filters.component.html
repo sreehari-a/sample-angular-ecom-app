@@ -1,0 +1,78 @@
+<div class="container">
+  <form (ngSubmit)="submitForm(f)" #f="ngForm">
+    <div class="row">
+      <div class="col-md-12" *ngFor="let filter of filters; let i = index">
+        <div class="form-group" *ngIf="filter.type === 'TextField'">
+          <label [for]="filter.field">{{ filter.label }}</label>
+          <input
+            type="text"
+            class="form-control"
+            [ngModel]="filter.defaultValue"
+            [name]="filter.field"
+            [id]="filter.field"
+            [placeholder]="filter.placeholder"
+          />
+        </div>
+        <div class="number-range-filter" *ngIf="filter.type === 'NumberRange'">
+          <div class="col-md-6 form-group">
+            <label [for]="filter.minField">{{ filter.minLabel }}</label>
+            <input
+              class="form-control"
+              type="number"
+              [ngModel]="filter.defaultValueMin"
+              [step]="filter.step || '0.01'"
+              [min]="filter.min"
+              [max]="filter.max"
+              [name]="filter.minField"
+              [id]="filter.minField"
+            />
+          </div>
+          <div class="col-md-6 form-group">
+            <label [for]="filter.maxField">{{ filter.maxLabel }}</label>
+            <input
+              class="form-control"
+              type="number"
+              [ngModel]="filter.defaultValueMax"
+              [step]="filter.step || '0.01'"
+              [min]="filter.min"
+              [max]="filter.max"
+              [name]="filter.maxField"
+              [id]="filter.maxField"
+            />
+          </div>
+        </div>
+        <div class="form-group" *ngIf="filter.type === 'StarRating'">
+          <label [for]="filter.field">{{ filter.label }}</label>
+          <select [name]="filter.field" [id]="filter.field" [ngModel]="filter.defaultValue || ''">
+            <option value=""> Select </option>
+            <option [value]="4">4 &starf; and above</option>
+            <option [value]="3">3 &starf; and above</option>
+            <option [value]="2">2 &starf; and above</option>
+            <option [value]="1">1 &starf; and above</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="filter.type === 'Dropdown'">
+          <label [for]="filter.field">{{ filter.label }}</label>
+          <select [name]="filter.field" [id]="filter.field" [ngModel]="filter.defaultValue">
+            <option value="">Select</option>
+            <option *ngFor="let option of filter.options" [value]="option.value">{{option.label}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!f.valid"
+        data-bs-dismiss="offcanvas"
+      >
+        Apply
+      </button>
+      <button class="btn btn-danger" type="button" [disabled]="!f.valid" (click)="clearFilters(f)">
+        Clear
+      </button>
+    </div>
+  </form>
+</div>

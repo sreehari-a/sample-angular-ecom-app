@@ -1,0 +1,14 @@
+<div *ngIf="!shoppingCart.length">Nothing is added in your cart!!!</div>
+<div class="list-wrapper">
+  <app-cart-item
+    *ngFor="let cartItem of shoppingCart"
+    [cartItem]="cartItem"
+  ></app-cart-item>
+  <div class="footer" *ngIf="shoppingCart.length">
+    <div class="total-amount">
+      <div>Total Amount:</div>
+      <div class="price">₹{{ totalAmt }}</div>
+    </div>
+    <button class="btn btn-primary">Proceed To Checkout</button>
+  </div>
+</div>

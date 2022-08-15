@@ -1,0 +1,15 @@
+<div class="item-container">
+  <div class="item-primary">
+    <img src="{{ cartItem?.image }}" alt="" class="img-responsive" />
+    <div class="item-details">
+      <div class="title">
+        {{ cartItem?.title }}
+      </div>
+      <app-number-switch [value]="cartItem?.quantity || 0" (setValue)="setQuantity($event)"></app-number-switch>
+      <div class="price">₹{{ cartItem?.price }}</div>
+    </div>
+  </div>
+  <div class="item-actions">
+    <button class="btn btn-primary">Buy Now</button>
+  </div>
+</div>

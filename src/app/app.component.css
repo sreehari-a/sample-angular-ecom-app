@@ -1,0 +1,7 @@
+.app-main-root {
+    height: calc(100% - 56px);
+    overflow: auto;
+}
+.main-root-loading {
+    opacity: 0.7;
+}

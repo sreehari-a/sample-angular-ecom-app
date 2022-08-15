@@ -1,0 +1,46 @@
+<div class="item-container" (click)="openModal('custom-modal-' + product._id)">
+  <img src="{{ product?.image }}" alt="" class="img-responsive" />
+  <div class="title">
+    {{ product?.title }}
+  </div>
+  <div class="rating" *ngIf="product?.rating">
+    <app-star-rating [currentRate]="product.rating?.rate || 0"></app-star-rating>
+    ({{ product.rating?.count }})
+  </div>
+  <div class="actions">
+    <button class="btn btn-success" (click)="addToCart($event)" *ngIf="!isAddedToCart">
+      <i class="bi-cart-fill"></i>
+    </button>
+    <button class="btn btn-danger" (click)="removeFromCart($event)" *ngIf="isAddedToCart">
+      <i class="bi-cart-x-fill"></i>
+    </button>
+    <div class="price">₹{{ product.price }}</div>
+  </div>
+</div>
+
+<jw-modal [id]="'custom-modal-' + product?._id?.toString()" class="item-details">
+  <div class="item-container" (click)="openModal('custom-modal-1')">
+    <div class="title">
+      {{ product?.title }}
+    </div>
+    <div class="details">
+      <img src="{{ product?.image }}" alt="" class="img-responsive" />
+      <div class="rating" *ngIf="product?.rating">
+        <app-star-rating [currentRate]="product?.rating?.rate || 0"></app-star-rating>
+        ({{ product?.rating?.count }})
+      </div>
+      <div class="desc">
+        {{ product.description }}
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" (click)="addToCart($event)" *ngIf="!isAddedToCart">
+          Add To Cart
+        </button>
+        <button class="btn btn-danger" (click)="removeFromCart($event)" *ngIf="isAddedToCart">
+          Remove From Cart
+        </button>
+        <div class="price">₹{{ product.price }}</div>
+      </div>
+    </div>
+  </div>
+</jw-modal>

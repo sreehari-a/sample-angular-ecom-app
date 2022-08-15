@@ -1,0 +1,6 @@
+<div style="width: 180px; overflow: hidden;">
+    <select style="width: auto;"  (change)="changeOption($event)" [ngModel]="value">
+        <option>{{placeholder}}</option>
+        <option class="category-option" *ngFor="let option of options">{{option}}</option>
+    </select>
+</div>
